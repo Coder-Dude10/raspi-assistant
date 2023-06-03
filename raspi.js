@@ -5,7 +5,7 @@ var xhttp = new XMLHttpRequest();
 xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
         console.log(JSON.parse(this.responseText).properties);
-        audio.play("reverb-fart.mp3");
+        audio.play("pacman.mp3");
     }
 };
 xhttp.open("GET", "https://api.weather.gov/gridpoints/TOP/86,72/forecast", true);
