@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cd raspi-assistant-main
 rm pacman.mp3
 rm raspi.js
 rm update-raspi.sh
