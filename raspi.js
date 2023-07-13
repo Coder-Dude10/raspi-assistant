@@ -1,8 +1,8 @@
-const axios = require('axios');
+//const axios = require('axios');
 const audio = require('play-sound');
 const { SerialPort } = require('serialport');
 
-const port = new SerialPort({ path: "COM4", baudRate: 9600 });
+const port = new SerialPort({ path: "/dev/serial", baudRate: 9600 });
 
 var options = {
   method: 'POST',
