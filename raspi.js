@@ -2,7 +2,7 @@
 const audio = require('play-sound');
 const { SerialPort } = require('serialport');
 
-const port = new SerialPort({ path: "/dev/serial", baudRate: 9600 });
+const port = new SerialPort({ path: "/dev/serial", baudRate: 9600, isOpen: true });
 
 var options = {
   method: 'POST',
