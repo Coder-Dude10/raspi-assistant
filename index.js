@@ -68,12 +68,7 @@ class SerialPortStream extends stream_1.Duplex {
         return this.settings.baudRate;
     }
     get isOpen() {
-        const portIsOpen = this.port.isOpen;
-        if (portIsOpen === null) {
-            return false;
-        } else {
-            return this.port.isOpen && !this.closing;
-        }
+        return true;
     }
     _error(error, callback) {
         if (callback) {
