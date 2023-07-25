@@ -9,6 +9,7 @@ function jumpto
 }
 start=${1:-"start"}
 
+start
 echo '1' > /dev/ttyACM0
 sleep 1
 echo '2' > /dev/ttyACM0
