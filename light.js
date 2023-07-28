@@ -1,10 +1,8 @@
 const { exec } = require('child_process');
 
-exec("echo '3' > /dev/ttyACM0", (error, stdout, stderr) => {
+exec("echo '3' > /dev/ttyACM0", (error) => {
     if (error) {
       console.error(`exec error: ${error}`);
       return;
     }
-    console.log(`stdout: ${stdout}`);
-    console.error(`stderr: ${stderr}`);
   });
