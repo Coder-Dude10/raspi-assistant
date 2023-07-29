@@ -5,7 +5,7 @@ var player = new soundplayer( { filename: "223_AM.wav" } );
 setInterval(getTime, 60000);
 
 function getTime() {
-  exec("date", (stdout) => {
+  exec("echo 'Hello World!'", (stdout) => {
     console.log(stdout);
     var dateTimeString = Buffer.from(stdout);
 
