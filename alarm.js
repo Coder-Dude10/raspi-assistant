@@ -6,6 +6,7 @@ setInterval(getTime, 60000);
 
 function getTime() {
   exec("date", (stdout) => {
+    console.log(stdout);
     var dateTimeString = Buffer.from(stdout);
 
     if (dateTimeString.includes(" 10:20") && dateTimeString.includes("PM")) {
