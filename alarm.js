@@ -6,7 +6,7 @@ var date = new Date();
 setInterval(getTime, 60000);
 
 function getTime() {
-  if (date.getHours() == 6 && date.getMinutes() == 30) {
+  if (date.getHours() == 23 && date.getMinutes() == 45) {
     exec("echo '3' > /dev/ttyACM0");
     player.play();
   }
