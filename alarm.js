@@ -8,7 +8,7 @@ setInterval(getTime, 60000);
 function getTime() {
   console.log(date.getHours() + ":" + date.getMinutes());
   
-  if (date.getHours() == 11 && date.getMinutes() == 50) {
+  if (date.getHours() == 23 && date.getMinutes() == 54) {
     exec("echo '3' > /dev/ttyACM0");
     player.play();
   }
