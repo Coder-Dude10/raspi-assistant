@@ -13,3 +13,5 @@ function getTime() {
 
   date = new Date();
 }
+
+player.play();
