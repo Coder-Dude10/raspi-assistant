@@ -13,7 +13,7 @@ function getTime() {
     player.play();
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-        console.log(JSON.parse(xhttp.responseText).properties);
+        console.log(JSON.parse(JSON.parse(xhttp.responseText).properties).periods);
       }
     };
     xhttp.open("GET", "https://api.weather.gov/gridpoints/TOP/86,72/forecast", true);
