@@ -14,10 +14,10 @@ function getTime() {
     xhttp.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         var forecasts = (JSON.stringify(JSON.parse(JSON.stringify(JSON.parse(xhttp.responseText).properties)).periods)).split("{");
-        var properties = (forecasts[1]).split(":");
+        var properties = (forecasts[4]).split(":");
 
-        for (var i = 0; i < forecasts.length; i++) {
-          console.log(i + " " + forecasts[i]);
+        for (var i = 0; i < properties.length; i++) {
+          console.log(i + " " + properties[i]);
         }
       }
     };
