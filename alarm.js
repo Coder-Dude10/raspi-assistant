@@ -17,7 +17,7 @@ function getTime() {
         var properties = (forecasts[4]).split(":");
         var detailedProperties = (properties[9].split('"'));
 
-        console.log(detailedProperties[1]);
+        exec("espeak 'Good Morning! The forecast for today is " + detailedProperties[1] + "'");
       }
     };
     xhttp.open("GET", "https://api.weather.gov/gridpoints/TOP/86,72/forecast", true);
