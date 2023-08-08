@@ -15,10 +15,9 @@ function getTime() {
       if (this.readyState == 4 && this.status == 200) {
         var forecasts = (JSON.stringify(JSON.parse(JSON.stringify(JSON.parse(xhttp.responseText).properties)).periods)).split("{");
         var properties = (forecasts[4]).split(":");
+        var detailedProperties = (properties[9].split('"'));
 
-        for (var i = 0; i < properties.length; i++) {
-          console.log(i + " " + properties[i]);
-        }
+        console.log(detailedProperties[1]);
       }
     };
     xhttp.open("GET", "https://api.weather.gov/gridpoints/TOP/86,72/forecast", true);
