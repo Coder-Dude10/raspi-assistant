@@ -8,7 +8,7 @@ var date = new Date();
 setInterval(getTime, 60000);
 
 function getTime() {
-  if (date.getHours() == 5 && date.getMinutes() == 0 || true) {
+  if ((date.getHours() == 5 && date.getMinutes() == 0) || (date.getHours() == 0 && date.getMinutes() == 20)) {
     exec("echo '3' > /dev/ttyACM0");
     player.play();
     xhttp.onreadystatechange = function() {
