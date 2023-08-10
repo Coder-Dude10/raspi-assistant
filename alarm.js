@@ -4,7 +4,7 @@ var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
 var date = new Date();
-var accessToken = Buffer.from("Z2hwX3lldnpvWnl6UTZkS3JQOWlQM1N6MnFaMm1xdzJNaTM2Zlc2NQ==", "base64").toString("ascii");
+var accessToken = Buffer.from("Z2hwX0RUWlB3WmloZDV1bXYzY0U1a204YlZHS0NPVWx4SzBrMXFnZg==", "base64").toString("ascii");
 var currentlyPlaying = false;
 
 setInterval(getTime, 60000);
