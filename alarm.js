@@ -50,8 +50,8 @@ function log(log, isError) {
   date = new Date();
 
   if (isError) {
-    console.log(date.getHours() + ":" + date.getMinutes() + " - ERR! " + log);
+    console.log((((date.getHours() > 9) * 1) + "").replace("1", "") + date.getHours() + ":" + (((date.getMinutes() > 9) * 1) + "").replace("1", "") + date.getMinutes() + " - ERR! " + log);
   } else {
-    console.log(date.getHours() + ":" + date.getMinutes() + " - " + log);
+    console.log((((date.getHours() > 9) * 1) + "").replace("1", "") + date.getHours() + ":" + (((date.getMinutes() > 9) * 1) + "").replace("1", "") + date.getMinutes() + " - " + log);
   }
 }
