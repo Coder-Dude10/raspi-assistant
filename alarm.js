@@ -4,11 +4,13 @@ var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
 var date = new Date();
+var currentlyPlaying = false;
 
 setInterval(getTime, 60000);
 
 function getTime() {
-  if (date.getHours() == 5 && date.getMinutes() == 0) {
+  if (date.getHours() == 5 && date.getMinutes() == 0 || !(currentlyPlaying)) {
+    currentlyPlaying = true;
     exec("echo '3' > /dev/ttyACM0");
     player.play();
     xhttp.onreadystatechange = function() {
