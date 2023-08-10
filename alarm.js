@@ -36,10 +36,10 @@ function sendCommand(command) {
   log("Attempting to " + command + "...");
   
   xhttp.open("PUT", "https://api.github.com/repos/Coder-Dude10/cloud-connection/contents/data.txt", true);
-  xhttp.setRequestHeader({
+  xhttp.setRequestHeader(JSON.stringify({
     Accept: "application/vnd.github+json",
     Authorization: "Bearer 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"
-  });
+  }));
   xhttp.send(JSON.stringify({
     message: "upload data",
     content: Buffer.from(command).toString("base64")
