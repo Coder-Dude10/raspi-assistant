@@ -1,9 +1,8 @@
 const { exec } = require('child_process');
 const soundplayer = require('sound-player');
-const { Octokit, App } = require("octokit");
-const octokit = new Octokit({
-  auth: Buffer.from("Z2hwX0RUWlB3WmloZDV1bXYzY0U1a204YlZHS0NPVWx4SzBrMXFnZg==", "base64").toString("ascii")
-});
+const { getStorage, ref, uploadString } = require('firebase/storage');
+const storage = getStorage();
+const storageRef = ref(storage, 'some-child');
 var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
@@ -39,15 +38,8 @@ function getTime() {
 async function sendCommand(command) {
   log("Attempting to " + command + "...", false);
 
-  await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
-    owner: "Coder-Dude10",
-    repo: "cloud-connection",
-    path: "data.txt",
-    message: "edit data",
-    content: Buffer.from(command).toString("base64"),
-    headers: {
-      'X-GitHub-Api-Version': '2022-11-28'
-    }
+  uploadString(storageRef, command).then((snapshot) => {
+    console.log("Uploaded a raw string!");
   });
 }
 
