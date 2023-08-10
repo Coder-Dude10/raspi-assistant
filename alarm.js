@@ -1,6 +1,6 @@
 const { exec } = require('child_process');
 const soundplayer = require('sound-player');
-const { getStorage, ref, uploadString } = require('firebase/storage');
+const { getStorage, ref, uploadString } = require('@firebase/storage');
 const storage = getStorage();
 const storageRef = ref(storage, 'some-child');
 var player = new soundplayer( { filename: "223_AM.wav" } );
