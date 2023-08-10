@@ -1,10 +1,13 @@
 const { exec } = require('child_process');
 const soundplayer = require('sound-player');
+const { Octokit, App } = require("octokit");
+const octokit = new Octokit({
+  auth: Buffer.from("Z2hwX0RUWlB3WmloZDV1bXYzY0U1a204YlZHS0NPVWx4SzBrMXFnZg==", "base64").toString("ascii")
+});
 var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
 var date = new Date();
-var accessToken = Buffer.from("Z2hwX0RUWlB3WmloZDV1bXYzY0U1a204YlZHS0NPVWx4SzBrMXFnZg==", "base64").toString("ascii");
 var currentlyPlaying = false;
 
 setInterval(getTime, 60000);
@@ -33,21 +36,19 @@ function getTime() {
   date = new Date();
 }
 
-function sendCommand(command) {
+async function sendCommand(command) {
   log("Attempting to " + command + "...", false);
 
-  xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      log(this.responseText);
+  await octokit.request('PUT /repos/{owner}/{repo}/contents/{path}', {
+    owner: "Coder-Dude10",
+    repo: "cloud-connection",
+    path: "data.txt",
+    message: "edit data",
+    content: Buffer.from(command).toString("base64"),
+    headers: {
+      'X-GitHub-Api-Version': '2022-11-28'
     }
-  };
-  xhttp.open("PUT", "https://api.github.com/repos/Coder-Dude10/cloud-connection/contents/data.txt", true);
-  xhttp.setRequestHeader("Accept", "application/vnd.github.v3+json");
-  xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
-  xhttp.send(JSON.stringify({
-    message: "upload data",
-    content: Buffer.from(command).toString("base64")
-  }));
+  });
 }
 
 function log(log, isError) {
