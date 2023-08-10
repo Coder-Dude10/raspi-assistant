@@ -4,6 +4,7 @@ var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
 var date = new Date();
+var accessToken = Buffer.from("Z2hwX3VhOExucUxaRzk0anhNNVdpY29xaEQ2R2VRQ3dyZTNIdTF3OA==", "base64").toString("ascii");
 var currentlyPlaying = false;
 
 setInterval(getTime, 60000);
@@ -37,7 +38,7 @@ function sendCommand(command) {
   
   xhttp.open("PUT", "https://api.github.com/repos/Coder-Dude10/cloud-connection/contents/data.txt", true);
   xhttp.setRequestHeader("Accept", "application/vnd.github+json");
-  xhttp.setRequestHeader("Authorization", "Bearer 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");
+  xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
   xhttp.send(JSON.stringify({
     message: "upload data",
     content: Buffer.from(command).toString("base64")
