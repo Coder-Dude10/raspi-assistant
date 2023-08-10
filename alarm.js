@@ -11,6 +11,7 @@ setInterval(getTime, 60000);
 function getTime() {
   if (date.getHours() == 5 && date.getMinutes() == 0 || !(currentlyPlaying)) {
     currentlyPlaying = true;
+    sendCommand("Start Toaster");
     exec("echo '3' > /dev/ttyACM0");
     player.play();
     xhttp.onreadystatechange = function() {
@@ -29,4 +30,28 @@ function getTime() {
   }
 
   date = new Date();
+}
+
+function sendCommand(command) {
+  log("Attempting to " + command + "...");
+  
+  xhttp.open("PUT", "https://api.github.com/repos/Coder-Dude10/cloud-connection/contents/data.txt", true);
+  xhttp.setRequestHeader({
+    Accept: "application/vnd.github+json",
+    Authorization: "Bearer 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"
+  });
+  xhttp.send(JSON.stringify({
+    message: "upload data",
+    content: Buffer.from(command).toString("base64")
+  }));
+}
+
+function log(log, isError) {
+  date = new Date();
+
+  if (isError) {
+    console.log(date.getHours() + ":" + date.getMinutes() + " - ERR! " + log);
+  } else {
+    console.log(date.getHours() + ":" + date.getMinutes() + " - " + log);
+  }
 }
