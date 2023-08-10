@@ -34,8 +34,13 @@ function getTime() {
 }
 
 function sendCommand(command) {
-  log("Attempting to " + command + "...");
-  
+  log("Attempting to " + command + "...", false);
+
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status != 200) {
+      log("Exit status: " + this.status, true);
+    }
+  };
   xhttp.open("PUT", "https://api.github.com/repos/Coder-Dude10/cloud-connection/contents/data.txt", true);
   xhttp.setRequestHeader("Accept", "application/vnd.github+json");
   xhttp.setRequestHeader("Authorization", "Bearer " + accessToken);
