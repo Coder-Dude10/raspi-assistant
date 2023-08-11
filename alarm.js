@@ -3,12 +3,21 @@ const soundplayer = require('sound-player');
 const { getStorage, ref, uploadString } = require('@firebase/storage');
 const storage = getStorage();
 const storageRef = ref(storage, 'some-child');
+var firebaseConfig = {
+  apiKey: "AIzaSyBA4-vUDqlhPxP35RSyL3RhlrLkWP3aU1g",
+  authDomain: "cloud-connection-622a5.firebaseapp.com",
+  databaseURL: "https://cloud-connection.firebaseio.com",
+  projectId: "cloud-connection-622a5",
+  storageBucket: "cloud-connection-622a5.appspot.com",
+  measurementId: "G-MEASUREMENT_ID"
+};
 var player = new soundplayer( { filename: "223_AM.wav" } );
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var xhttp = new XMLHttpRequest();
 var date = new Date();
 var currentlyPlaying = false;
 
+firebase.initializeApp(firebaseConfig);
 setInterval(getTime, 60000);
 
 function getTime() {
